@@ -92,12 +92,12 @@ class RoverTest {
 	@Test
 	void rover_moving_onto_obstacle_stops_at_obstacle(){
 		Grid grid = new Grid();
-		grid.placeObstacle(0, 1);
+		grid.placeObstacle(0, 3);
 
 		Rover rover = new Rover(grid);
-		String state = rover.runCommand("MMMM");
+		String state = rover.runCommand("MMMMM");
 
-		assertEquals("O:0:0:N", state);
+		assertEquals("O:0:2:N", state);
 	}
 
 	@Nested
