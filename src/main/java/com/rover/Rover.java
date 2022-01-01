@@ -2,6 +2,8 @@ package com.rover;
 
 public class Rover {
 
+	private static final int BOUNDARY_Y = 10;
+	private static final int BOUNDARY_X = 10;
 	private static final int STARTING_Y = 0;
 	private static final int STARTING_X = 0;
 
@@ -16,11 +18,11 @@ public class Rover {
 	}
 
 	public int getX() {
-		return STARTING_X;
+		return this.x % BOUNDARY_X;
 	}
 
 	public int getY() {
-		return STARTING_Y;
+		return this.y % BOUNDARY_Y;
 	}
 
 	public Direction getDirection() {
@@ -50,16 +52,16 @@ public class Rover {
 			x++;
 		}
 		if (direction == Direction.WEST) {
-			x += 9;
+			x += BOUNDARY_X - 1;
 		}
 		if (direction == Direction.SOUTH) {
-			y += 9;
+			y += BOUNDARY_Y - 1;
 		}
 	}
 
 	@Override
 	public String toString() {
-		return String.format("%d:%d:%s", this.x, this.y, this.direction);
+		return String.format("%d:%d:%s", getX(), getY(), this.direction);
 	}
 
 	private void turnRight() {
@@ -69,4 +71,5 @@ public class Rover {
 	private void turnLeft() {
 		this.direction = direction.turnLeft();
 	}
+
 }

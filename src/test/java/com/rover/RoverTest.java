@@ -61,12 +61,30 @@ class RoverTest {
 	}
 
 	@Test
+	void rover_moving_west_twice_wraps_on_x(){
+		Rover rover = new Rover();
+		
+		String state = rover.runCommand("LMM");
+
+		assertEquals("8:0:W", state);
+	}
+
+	@Test
 	void rover_moving_south_wraps_around_on_y(){
 		Rover rover = new Rover();
 		
 		String state = rover.runCommand("LLM");
 
 		assertEquals("0:9:S", state);
+	}
+
+	@Test
+	void rover_moving_south_twice_wraps_around_on_y(){
+		Rover rover = new Rover();
+		
+		String state = rover.runCommand("LLMM");
+
+		assertEquals("0:8:S", state);
 	}
 
 	@Nested
