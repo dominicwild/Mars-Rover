@@ -28,7 +28,7 @@ The program's output is the final position of the rover after all the move comma
 - given an input `MMRMMLM` then the output should be `2:3:N`
 - given an input `MMMMMMMMMM` gives output `0:0:N` (due to wrap-around)
 
-![Mars Rover Gift](https://images.ctfassets.net/ofnietn7wwjz/63Umt81N…d48eba4bd5a1ae60e4c702da57/MarsRoverAnimation.gif)
+![Mars Rover Gif](https://images.ctfassets.net/ofnietn7wwjz/63Umt81N…d48eba4bd5a1ae60e4c702da57/MarsRoverAnimation.gif)
 
 ## Rules
 - The rover receives a char array of commands e.g. RMMLM and returns the finishing point after the moves e.g. 2:1:N
