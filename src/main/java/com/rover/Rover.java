@@ -49,6 +49,12 @@ public class Rover {
 		if (direction == Direction.EAST) {
 			x++;
 		}
+		if (direction == Direction.WEST) {
+			x += 9;
+		}
+		if (direction == Direction.SOUTH) {
+			y += 9;
+		}
 	}
 
 	@Override
