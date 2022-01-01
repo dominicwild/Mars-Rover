@@ -24,9 +24,13 @@ If a rover reaches the end of the plateau, it wraps around the end of the grid.
 ## Output
 The program's output is the final position of the rover after all the move commands have been executed. The position is represented as a coordinate pair and a direction, joined by colons to form a string. For example: a rover whose position is 2:3:W is at square (2,3), facing west.
 
+# Obstacles
+The grid may have obstacles. If a given sequence of commands encounters an obstacle, the rover moves up to the last possible point and reports the obstacle by prefixing O: to the position string that it returns. For instance, O:1:1:N would mean that the rover encountered an obstacle at position (1, 2).
+
 ## Examples
 - given an input `MMRMMLM` then the output should be `2:3:N`
 - given an input `MMMMMMMMMM` gives output `0:0:N` (due to wrap-around)
+- given a grid with an obstacle at `(0, 3)`, input `MMMM` gives output `O:0:2:N`
 
 ![Mars Rover Gif](https://images.ctfassets.net/ofnietn7wwjz/63Umt81NFk4Mv33gfJOFBV/7e9328d48eba4bd5a1ae60e4c702da57/MarsRoverAnimation.gif)
 
