@@ -2,16 +2,95 @@ package com.rover;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 class RoverTest {
-	
+
 	@Test
-	void rover_begins_at_position_0_0_facing_north(){
+	void rover_begins_at_position_0_0_facing_north() {
 		Rover rover = new Rover();
 		assertEquals(0, rover.getX());
 		assertEquals(0, rover.getY());
 		assertEquals(Direction.NORTH, rover.getDirection());
+	}
+
+	
+
+	@Nested
+	class DirectionTests {
+
+		@Test
+		void rover_turning_left_from_north_turns_to_west() {
+			Rover rover = new Rover();
+
+			rover.runCommand("L");
+
+			assertEquals(Direction.WEST, rover.getDirection());
+		}
+
+		@Test
+		void rover_turning_left_twice_faces_south() {
+			Rover rover = new Rover();
+
+			rover.runCommand("LL");
+
+			assertEquals(Direction.SOUTH, rover.getDirection());
+		}
+
+		@Test
+		void rover_turning_left_three_times_faces_east() {
+			Rover rover = new Rover();
+
+			rover.runCommand("LLL");
+
+			assertEquals(Direction.EAST, rover.getDirection());
+		}
+
+		@Test
+		void rover_turning_left_four_times_faces_north() {
+			Rover rover = new Rover();
+
+			rover.runCommand("LLLL");
+
+			assertEquals(Direction.NORTH, rover.getDirection());
+		}
+
+		@Test
+		void rover_turning_right_from_north_turns_to_east() {
+			Rover rover = new Rover();
+
+			rover.runCommand("R");
+
+			assertEquals(Direction.EAST, rover.getDirection());
+		}
+
+		@Test
+		void rover_turning_right_twice_faces_south() {
+			Rover rover = new Rover();
+
+			rover.runCommand("RR");
+
+			assertEquals(Direction.SOUTH, rover.getDirection());
+		}
+
+		@Test
+		void rover_turning_right_three_times_faces_west() {
+			Rover rover = new Rover();
+
+			rover.runCommand("RRR");
+
+			assertEquals(Direction.WEST, rover.getDirection());
+		}
+
+		@Test
+		void rover_turning_right_four_times_faces_north() {
+			Rover rover = new Rover();
+
+			rover.runCommand("RRRR");
+
+			assertEquals(Direction.NORTH, rover.getDirection());
+		}
 	}
 
 }
