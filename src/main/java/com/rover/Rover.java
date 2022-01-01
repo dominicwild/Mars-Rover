@@ -1,28 +1,32 @@
 package com.rover;
 
+import com.grid.Grid;
+
 public class Rover {
 
-	private static final int BOUNDARY_Y = 10;
-	private static final int BOUNDARY_X = 10;
+	private static final Direction START_DIRECTION = Direction.NORTH;
 	private static final int STARTING_Y = 0;
 	private static final int STARTING_X = 0;
 
-	private int x;
-	private int y;
-	private Direction direction;
+	private int xPosition = STARTING_X;
+	private int yPosition = STARTING_Y;
+	private Direction direction = START_DIRECTION;
+	private Grid grid;
 
 	public Rover() {
-		this.x = STARTING_X;
-		this.y = STARTING_Y;
-		this.direction = Direction.NORTH;
+		this.grid = new Grid();
+	}
+
+	public Rover(Grid grid) {
+		this.grid = grid;
 	}
 
 	public int getX() {
-		return this.x % BOUNDARY_X;
+		return grid.getX(xPosition);
 	}
 
 	public int getY() {
-		return this.y % BOUNDARY_Y;
+		return grid.getY(yPosition);
 	}
 
 	public Direction getDirection() {
@@ -45,17 +49,17 @@ public class Rover {
 	}
 
 	private void move() {
-		if (direction == Direction.NORTH) {
-			y++;
+		if (direction == START_DIRECTION) {
+			yPosition++;
 		}
 		if (direction == Direction.EAST) {
-			x++;
+			xPosition++;
 		}
 		if (direction == Direction.WEST) {
-			x += BOUNDARY_X - 1;
+			xPosition += grid.getWidth() - 1;
 		}
 		if (direction == Direction.SOUTH) {
-			y += BOUNDARY_Y - 1;
+			yPosition += grid.getHeight() - 1;
 		}
 	}
 

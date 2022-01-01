@@ -87,6 +87,8 @@ class RoverTest {
 		assertEquals("0:8:S", state);
 	}
 
+	
+
 	@Nested
 	class DirectionTests {
 

@@ -31,4 +31,12 @@ public class Grid {
 		return obstacles.getOrDefault(coordinateKey(i, j), false);
 	}
 
+	public int getX(int xPosition) {
+		return xPosition % GRID_WIDTH;
+	}
+
+	public int getY(int yPosition) {
+		return yPosition % GRID_HEIGHT;
+	}
+
 }
