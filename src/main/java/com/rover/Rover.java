@@ -27,7 +27,7 @@ public class Rover {
 		return this.direction;
 	}
 
-	public void runCommand(String command) {
+	public String runCommand(String command) {
 		for (char commandChar : command.toCharArray()) {
 			if (commandChar == 'L') {
 				turnLeft();
@@ -35,7 +35,25 @@ public class Rover {
 			if (commandChar == 'R') {
 				turnRight();
 			}
+			if (commandChar == 'M') {
+				move();
+			}
 		}
+		return toString();
+	}
+
+	private void move() {
+		if (direction == Direction.NORTH) {
+			y++;
+		}
+		if (direction == Direction.EAST) {
+			x++;
+		}
+	}
+
+	@Override
+	public String toString() {
+		return String.format("%d:%d:%s", this.x, this.y, this.direction);
 	}
 
 	private void turnRight() {

@@ -15,7 +15,41 @@ class RoverTest {
 		assertEquals(Direction.NORTH, rover.getDirection());
 	}
 
-	
+	@Test
+	void rover_run_commands_returns_state_string() {
+		Rover rover = new Rover();
+
+		String state = rover.runCommand("");
+
+		assertEquals("0:0:N", state);
+	}
+
+	@Test
+	void rover_moving_north_increments_y_by_one(){
+		Rover rover = new Rover();
+		
+		String state = rover.runCommand("M");
+
+		assertEquals("0:1:N", state);
+	}
+
+	@Test
+	void rover_turning_right_then_moving_increments_x_by_one(){
+		Rover rover = new Rover();
+		
+		String state = rover.runCommand("RM");
+
+		assertEquals("1:0:E", state);
+	}
+
+	@Test
+	void rover_moving_right_then_north_increments_x_and_y_by_one(){
+		Rover rover = new Rover();
+		
+		String state = rover.runCommand("RMLM");
+
+		assertEquals("1:1:N", state);
+	}
 
 	@Nested
 	class DirectionTests {

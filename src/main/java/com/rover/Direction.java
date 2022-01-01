@@ -29,4 +29,9 @@ public enum Direction {
 		return rightDirections.get(this);
 	}
 
+	@Override
+	public String toString() {
+		return "" + this.name().charAt(0);
+	}
+
 }
