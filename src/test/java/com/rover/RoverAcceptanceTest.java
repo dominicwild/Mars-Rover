@@ -2,6 +2,8 @@ package com.rover;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import com.grid.Grid;
+
 import org.junit.jupiter.api.Test;
 
 public class RoverAcceptanceTest {
@@ -41,6 +43,20 @@ public class RoverAcceptanceTest {
 		
 		String state = rover.runCommand("LMLMLMLMMRM");
 		assertEquals("1:1:E", state);
+	}
+
+	@Test
+	void rover_stops_on_grid_of_many_obstacles_on_colision(){
+		Grid grid = new Grid();
+		grid.placeObstacle(1, 1);
+		grid.placeObstacle(5, 5);
+		grid.placeObstacle(2, 2);
+
+		Rover rover = new Rover(grid);
+
+		String status = rover.runCommand("RMMMMMLMMMMMMMMMM");
+
+		assertEquals("O:5:4:N", status);
 	}
 
 }

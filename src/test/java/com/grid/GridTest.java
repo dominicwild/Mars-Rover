@@ -19,7 +19,7 @@ class GridTest {
 	void obstacle_can_be_placed_in_the_grid() {
 		Grid grid = new Grid();
 		grid.placeObstacle(1, 1);
-		assertTrue(grid.isObstacle(1, 1));
+		assertTrue(grid.hasObstacleOn(1, 1));
 	}
 
 	@Test
@@ -27,7 +27,7 @@ class GridTest {
 		Grid grid = new Grid();
 		for (int i = 0; i < grid.getWidth(); i++) {
 			for (int j = 0; j < grid.getHeight(); j++) {
-				assertFalse(grid.isObstacle(i, j));
+				assertFalse(grid.hasObstacleOn(i, j));
 			}
 		}
 	}

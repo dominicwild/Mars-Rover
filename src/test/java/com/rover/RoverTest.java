@@ -2,6 +2,8 @@ package com.rover;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import com.grid.Grid;
+
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
@@ -87,7 +89,16 @@ class RoverTest {
 		assertEquals("0:8:S", state);
 	}
 
-	
+	@Test
+	void rover_moving_onto_obstacle_stops_at_obstacle(){
+		Grid grid = new Grid();
+		grid.placeObstacle(0, 1);
+
+		Rover rover = new Rover(grid);
+		String state = rover.runCommand("MMMM");
+
+		assertEquals("O:0:0:N", state);
+	}
 
 	@Nested
 	class DirectionTests {

@@ -42,25 +42,41 @@ public class Rover {
 				turnRight();
 			}
 			if (commandChar == 'M') {
-				move();
+				Point nextPosition = move();
+				if (grid.hasObstacleOn(nextPosition.getX(), nextPosition.getY())) {
+					return "O:" + toString();
+				}
+				assignNewPosition(nextPosition);
 			}
 		}
 		return toString();
 	}
 
-	private void move() {
-		if (direction == START_DIRECTION) {
-			yPosition++;
+	private void assignNewPosition(Point position) {
+		this.xPosition = position.getX();
+		this.yPosition = position.getY();
+	}
+
+	private Point move() {
+		int nextYPosition = yPosition;
+		int nextXPosition = xPosition;
+
+		switch (direction) {
+			case NORTH:
+				nextYPosition++;
+				break;
+			case SOUTH:
+				nextYPosition += grid.getHeight() - 1;
+				break;
+			case EAST:
+				nextXPosition++;
+				break;
+			case WEST:
+				nextXPosition += grid.getWidth() - 1;
+				break;
 		}
-		if (direction == Direction.EAST) {
-			xPosition++;
-		}
-		if (direction == Direction.WEST) {
-			xPosition += grid.getWidth() - 1;
-		}
-		if (direction == Direction.SOUTH) {
-			yPosition += grid.getHeight() - 1;
-		}
+
+		return new Point(nextYPosition, nextXPosition);
 	}
 
 	@Override

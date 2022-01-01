@@ -27,7 +27,7 @@ public class Grid {
 		return i + "," + j;
 	}
 
-	public boolean isObstacle(int i, int j) {
+	public boolean hasObstacleOn(int i, int j) {
 		return obstacles.getOrDefault(coordinateKey(i, j), false);
 	}
 
