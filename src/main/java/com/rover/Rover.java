@@ -4,6 +4,10 @@ import com.grid.Grid;
 
 public class Rover {
 
+	private static final char MOVE_COMMAND = 'M';
+	private static final char RIGHT_COMMAND = 'R';
+	private static final char LEFT_COMMAND = 'L';
+	private static final String OBSTACT_OBSTUCTED_PREFIX = "O:";
 	private static final Direction START_DIRECTION = Direction.NORTH;
 	private static final int STARTING_Y = 0;
 	private static final int STARTING_X = 0;
@@ -35,16 +39,16 @@ public class Rover {
 
 	public String runCommand(String command) {
 		for (char commandChar : command.toCharArray()) {
-			if (commandChar == 'L') {
+			if (commandChar == LEFT_COMMAND) {
 				turnLeft();
 			}
-			if (commandChar == 'R') {
+			if (commandChar == RIGHT_COMMAND) {
 				turnRight();
 			}
-			if (commandChar == 'M') {
+			if (commandChar == MOVE_COMMAND) {
 				Point nextPosition = move();
 				if (grid.hasObstacleOn(nextPosition.getX(), nextPosition.getY())) {
-					return "O:" + toString();
+					return OBSTACT_OBSTUCTED_PREFIX + toString();
 				}
 				assignNewPosition(nextPosition);
 			}
